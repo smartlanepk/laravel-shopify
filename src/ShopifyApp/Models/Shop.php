@@ -13,6 +13,13 @@ class Shop extends Model
     use ShopModelTrait;
 
     /**
+     * The database connection that should be used by the model.
+     *
+     * @var string
+     */
+    protected $connection = 'shopify';
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array

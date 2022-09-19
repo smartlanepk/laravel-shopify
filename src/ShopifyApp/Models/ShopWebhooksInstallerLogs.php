@@ -9,7 +9,12 @@ use Illuminate\Database\Eloquent\Model;
  */
 class ShopWebhooksInstallerLogs extends Model
 {
-
+    /**
+     * The database connection that should be used by the model.
+     *
+     * @var string
+     */
+    protected $connection = 'shopify';
     /**
      * The attributes that are mass assignable.
      *

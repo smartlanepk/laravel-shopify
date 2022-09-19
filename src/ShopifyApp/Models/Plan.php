@@ -12,7 +12,12 @@ class Plan extends Model
     // Types of plans
     const PLAN_RECURRING = 1;
     const PLAN_ONETIME = 2;
-
+    /**
+     * The database connection that should be used by the model.
+     *
+     * @var string
+     */
+    protected $connection = 'shopify';
     /**
      * The attributes that should be casted to native types.
      *

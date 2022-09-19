@@ -13,7 +13,12 @@ use Illuminate\Support\Carbon;
 class Charge extends Model
 {
     use SoftDeletes;
-
+    /**
+     * The database connection that should be used by the model.
+     *
+     * @var string
+     */
+    protected $connection = 'shopify';
     // Types of charges
     const CHARGE_RECURRING = 1;
     const CHARGE_ONETIME = 2;
