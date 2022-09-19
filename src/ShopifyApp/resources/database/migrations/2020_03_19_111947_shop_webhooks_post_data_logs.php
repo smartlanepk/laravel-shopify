@@ -13,7 +13,7 @@ class ShopWebhooksPostDataLogs extends Migration
      */
     public function up()
     {
-        Schema::create('shop_webhooks_installer_logs', function (Blueprint $table) {
+        Schema::connection('shopify')->create('shop_webhooks_installer_logs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->longText('uri');
             $table->longText('request');
@@ -36,8 +36,8 @@ class ShopWebhooksPostDataLogs extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('shop_webhooks_post_data_logs');
-        Schema::dropIfExists('shop_webhooks_install_logs');
-        Schema::dropIfExists('shop_webhooks_installer_logs');
+        Schema::connection('shopify')->dropIfExists('shop_webhooks_post_data_logs');
+        Schema::connection('shopify')->dropIfExists('shop_webhooks_install_logs');
+        Schema::connection('shopify')->dropIfExists('shop_webhooks_installer_logs');
     }
 }

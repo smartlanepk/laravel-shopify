@@ -13,7 +13,7 @@ class AddBillingToShopsTable extends Migration
      */
     public function up()
     {
-        Schema::table('shops', function (Blueprint $table) {
+        Schema::connection('shopify')->table('shops', function (Blueprint $table) {
             $table->bigInteger('charge_id')->nullable(true)->default(null);
             $table->boolean('grandfathered')->default(false);
         });
@@ -26,7 +26,7 @@ class AddBillingToShopsTable extends Migration
      */
     public function down()
     {
-        Schema::table('shops', function (Blueprint $table) {
+        Schema::connection('shopify')->table('shops', function (Blueprint $table) {
             // Laravel doesn't seem to support multiple dropColumn commands
             // See: (https://github.com/laravel/framework/issues/2979#issuecomment-227468621)
             $table->dropColumn(['charge_id', 'grandfathered']);

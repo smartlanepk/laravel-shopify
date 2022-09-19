@@ -13,7 +13,7 @@ class CreatePlansTable extends Migration
      */
     public function up()
     {
-        Schema::create('plans', function (Blueprint $table) {
+        Schema::connection('shopify')->create('plans', function (Blueprint $table) {
             $table->increments('id');
 
             // The type of plan, either Plan::CHARGE_RECURRING (1) or Plan::CHARGE_ONETIME (2)
@@ -52,6 +52,6 @@ class CreatePlansTable extends Migration
      */
     public function down()
     {
-        Schema::drop('plans');
+        Schema::connection('shopify')->drop('plans');
     }
 }

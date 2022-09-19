@@ -13,7 +13,7 @@ class AddDefaultToTestOnChargesTable extends Migration
      */
     public function up()
     {
-        Schema::table('charges', function (Blueprint $table) {
+        Schema::connection('shopify')->table('charges', function (Blueprint $table) {
             $table->boolean('test')->default(false)->change();
         });
     }
@@ -25,7 +25,7 @@ class AddDefaultToTestOnChargesTable extends Migration
      */
     public function down()
     {
-        Schema::table('charges', function (Blueprint $table) {
+        Schema::connection('shopify')->table('charges', function (Blueprint $table) {
             $table->boolean('test')->default(null)->change();
         });
     }

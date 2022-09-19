@@ -13,7 +13,7 @@ class AddNamespaceToShopsTable extends Migration
      */
     public function up()
     {
-        Schema::table('shops', function (Blueprint $table) {
+        Schema::connection('shopify')->table('shops', function (Blueprint $table) {
             $table->string('namespace')->nullable(true)->default(null);
         });
     }
@@ -25,7 +25,7 @@ class AddNamespaceToShopsTable extends Migration
      */
     public function down()
     {
-        Schema::table('shops', function (Blueprint $table) {
+        Schema::connection('shopify')->table('shops', function (Blueprint $table) {
             $table->dropColumn(['namespace']);
         });
     }

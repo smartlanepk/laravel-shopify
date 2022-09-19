@@ -14,7 +14,7 @@ class AddUsageChargeSupportToChargesTable extends Migration
      */
     public function up()
     {
-        Schema::table('charges', function (Blueprint $table) {
+        Schema::connection('shopify')->table('charges', function (Blueprint $table) {
             // Description support
             $table->string('description')->nullable();
 
@@ -22,7 +22,7 @@ class AddUsageChargeSupportToChargesTable extends Migration
             $table->bigInteger('reference_charge')->nullable();
         });
 
-        Schema::table('charges', function (Blueprint $table) {
+        Schema::connection('shopify')->table('charges', function (Blueprint $table) {
             // Linking to charge_id, seperate schema block due to contraint issue
             $table->foreign('reference_charge')->references('charge_id')->on('charges')->onDelete('cascade');
         });
@@ -35,9 +35,9 @@ class AddUsageChargeSupportToChargesTable extends Migration
      */
     public function down()
     {
-        Schema::table('charges', function (Blueprint $table) {
+        Schema::connection('shopify')->table('charges', function (Blueprint $table) {
             // @codeCoverageIgnoreStart
-            if (DB::getDriverName() != 'sqlite') {
+            if (DB::connection('shopify')->getDriverName() != 'sqlite') {
                 $table->dropForeign('charges_reference_charge_foreign');
             }
             // @codeCoverageIgnoreEnd

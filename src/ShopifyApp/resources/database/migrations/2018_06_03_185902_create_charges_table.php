@@ -14,7 +14,7 @@ class CreateChargesTable extends Migration
     public function up()
     {
         // Thanks to @ncpope of Github.com
-        Schema::create('charges', function (Blueprint $table) {
+        Schema::connection('shopify')->create('charges', function (Blueprint $table) {
             $table->increments('id');
 
             // Filled in when the charge is created, provided by shopify, unique makes it indexed
@@ -77,6 +77,6 @@ class CreateChargesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('charges');
+        Schema::connection('shopify')->drop('charges');
     }
 }

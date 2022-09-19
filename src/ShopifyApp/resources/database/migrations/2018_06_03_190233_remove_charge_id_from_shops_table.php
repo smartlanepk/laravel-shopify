@@ -13,7 +13,7 @@ class RemoveChargeIdFromShopsTable extends Migration
      */
     public function up()
     {
-        Schema::table('shops', function (Blueprint $table) {
+        Schema::connection('shopify')->table('shops', function (Blueprint $table) {
             $table->dropColumn(['charge_id']);
         });
     }
@@ -25,7 +25,7 @@ class RemoveChargeIdFromShopsTable extends Migration
      */
     public function down()
     {
-        Schema::table('shops', function (Blueprint $table) {
+        Schema::connection('shopify')->table('shops', function (Blueprint $table) {
             $table->bigInteger('charge_id')->nullable(true)->default(null);
         });
     }

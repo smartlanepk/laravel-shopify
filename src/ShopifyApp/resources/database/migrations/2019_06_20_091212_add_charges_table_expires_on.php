@@ -13,7 +13,7 @@ class AddChargesTableExpiresOn extends Migration
      */
     public function up()
     {
-        Schema::table('charges', function (Blueprint $table) {
+        Schema::connection('shopify')->table('charges', function (Blueprint $table) {
             $table->timestamp('expires_on')->after('cancelled_on')->nullable();
         });
     }
@@ -25,7 +25,7 @@ class AddChargesTableExpiresOn extends Migration
      */
     public function down()
     {
-        Schema::table('charges', function (Blueprint $table) {
+        Schema::connection('shopify')->table('charges', function (Blueprint $table) {
             $table->dropColumn(['expires_on']);
         });
     }

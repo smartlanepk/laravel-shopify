@@ -13,7 +13,7 @@ class AddFreemiumFlagToShopsTable extends Migration
      */
     public function up()
     {
-        Schema::table('shops', function (Blueprint $table) {
+        Schema::connection('shopify')->table('shops', function (Blueprint $table) {
             $table->boolean('freemium')->default(false);
         });
     }
@@ -25,7 +25,7 @@ class AddFreemiumFlagToShopsTable extends Migration
      */
     public function down()
     {
-        Schema::table('shops', function (Blueprint $table) {
+        Schema::connection('shopify')->table('shops', function (Blueprint $table) {
             $table->dropColumn(['freemium']);
         });
     }

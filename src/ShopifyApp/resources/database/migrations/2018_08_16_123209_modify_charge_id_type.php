@@ -13,7 +13,7 @@ class ModifyChargeIdType extends Migration
      */
     public function up()
     {
-        Schema::table('charges', function (Blueprint $table) {
+        Schema::connection('shopify')->table('charges', function (Blueprint $table) {
             $table->bigInteger('charge_id')->change();
         });
     }
@@ -25,7 +25,7 @@ class ModifyChargeIdType extends Migration
      */
     public function down()
     {
-        Schema::table('charges', function (Blueprint $table) {
+        Schema::connection('shopify')->table('charges', function (Blueprint $table) {
             $table->integer('charge_id')->change();
         });
     }
