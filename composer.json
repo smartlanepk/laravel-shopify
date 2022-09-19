@@ -19,7 +19,7 @@
     "require": {
         "php": ">=7.1.0",
         "laravel/framework": "~5.6 | ^6.0",
-        
+        "ohmybrew/basic-shopify-api": "dev-smartlane",
         "doctrine/dbal": "~2.5"
     },
     "require-dev": {
@@ -57,7 +57,7 @@
     },
     "repositories":[
         {
-            "type": "vcs",
+            "type": "git",
             "url": "git@github.com:smartlanepk/basic-shopify-api.git"
         }
     ]
